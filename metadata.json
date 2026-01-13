@@ -1,0 +1,20 @@
+{
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ],
+  "name": "Copy of Celadon Journal",
+  "short_name": "Celadon",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F9F8F4",
+  "theme_color": "#ACE1AF",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3593/3593444.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "description": ""
+}
