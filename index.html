@@ -1,145 +1,49 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="manifest" href="metadata.json">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Celadon | A Living Journal</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+
+    <!-- PWA / iOS -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="manifest" href="/metadata.json" />
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Minimal base styles (React + Tailwind will handle the rest) -->
     <style>
-        :root {
-            --celadon-brand: #ACE1AF; 
-            --celadon-dark: #2C3E2D;
-            --celadon-sand: #F9F8F4;
-            --celadon-clay: #A68B77;
-        }
-        .serif { font-family: 'Cormorant Garamond', serif; }
-        .sans { font-family: 'Montserrat', sans-serif; }
-        
-        body { 
-            background-color: var(--celadon-sand); 
-            color: #333; 
-            font-family: 'Montserrat', sans-serif;
-            letter-spacing: 0.02em;
-            overflow-x: hidden;
-        }
+      body {
+        margin: 0;
+        font-family: "Montserrat", sans-serif;
+        background: #f9f8f4;
+      }
 
-        .brand-text {
-            color: var(--celadon-brand);
-            text-shadow: 1px 1px 0px rgba(44, 62, 45, 0.1);
-        }
-
-        .kinfolk-card {
-            background: #fff;
-            border: 1px solid rgba(0,0,0,0.03);
-            box-shadow: 0 4px 20px -10px rgba(0,0,0,0.05);
-        }
-
-        .grain {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            opacity: 0.05;
-            pointer-events: none;
-            z-index: 9999;
-            background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(-2deg); }
-            50% { transform: translateY(-8px) rotate(2deg); }
-            100% { transform: translateY(0px) rotate(-2deg); }
-        }
-
-        @keyframes scan {
-            0% { top: -10%; }
-            100% { top: 110%; }
-        }
-
-        .scanner-line {
-            position: absolute;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--celadon-brand);
-            box-shadow: 0 0 15px var(--celadon-brand);
-            z-index: 10;
-            animation: scan 2s linear infinite;
-        }
-
-        /* Base Sticker */
-        .sticker-base {
-            position: relative;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-            animation: float 5s ease-in-out infinite;
-        }
-
-        /* iOS Lift Style */
-        .style-lift img {
-            border: 5px solid white;
-            background: white;
-            border-radius: 50%;
-            filter: drop-shadow(0 8px 12px rgba(0,0,0,0.2));
-            mask-image: radial-gradient(circle, black 70%, transparent 100%);
-            -webkit-mask-image: radial-gradient(circle, black 70%, transparent 100%);
-        }
-
-        /* Polaroid Style */
-        .style-polaroid {
-            padding: 8px 8px 24px 8px;
-            background: white;
-            box-shadow: 2px 4px 15px rgba(0,0,0,0.1);
-            border-radius: 2px;
-            transform: rotate(-3deg);
-        }
-        .style-polaroid img {
-            filter: sepia(0.2) contrast(1.1);
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-
-        /* Graphic Style */
-        .style-graphic {
-            border: 1px solid black;
-            padding: 4px;
-            background: #fff;
-            box-shadow: 8px 8px 0px rgba(0,0,0,0.05);
-        }
-
-        .sticker-base:hover {
-            transform: scale(1.15) rotate(5deg) !important;
-            z-index: 50;
-        }
-
-        .custom-scroll::-webkit-scrollbar { width: 4px; }
-        .custom-scroll::-webkit-scrollbar-thumb { background: var(--celadon-brand); border-radius: 10px; }
-
-        .auth-input {
-            border-bottom: 1px solid #eee;
-            transition: all 0.3s ease;
-        }
-        .auth-input:focus {
-            border-bottom: 1px solid var(--celadon-brand);
-            outline: none;
-        }
+      .grain {
+        position: fixed;
+        inset: 0;
+        opacity: 0.05;
+        pointer-events: none;
+        z-index: 9999;
+        background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+      }
     </style>
-<script type="importmap">
-{
-  "imports": {
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "@google/genai": "https://esm.sh/@google/genai@^1.35.0"
-  }
-}
-</script>
-</head>
-<body>
+  </head>
+
+  <body>
     <div class="grain"></div>
     <div id="root"></div>
-</body>
+
+    <!-- 🔴 THIS IS THE IMPORTANT PART -->
+    <!-- Your project does NOT have /src -->
+    <script type="module" src="/index.tsx"></script>
+  </body>
 </html>
+
