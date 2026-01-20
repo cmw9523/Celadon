@@ -47,7 +47,7 @@ const EMOJI_LIBRARY = [
   // Objects & Vibes
   "🕯️", "🍵", "🧘", "🍯", "📜", "🖋️", "🎨", "🎻", "🏛️", "🗝️", "🕊️", "📖", "🔮", "🧿", "🧺", "🎐", "🏮", "💎",
   // Animals
-  " Swan", "🦋", "🐈", "🐇", "🧚", "🐝", "🦜", "🦌", "🐘", "🐋", "🐾", "🐞",
+  "🦢",", "🦋", "🐈", "🐇", "🧚", "🐝", "🦜", "🦌", "🐘", "🐋", "🐾", "🐞",
   // Food & Travel
   "🍮", "🥐", "🧁", "🍇", "🍊", "🍎", "🥝", "🍱", "🚲", "🏡", "⛰️", "🌊", "⛱️", "🏕️", "🛶", "🚂"
 ];
@@ -225,15 +225,11 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen w-full max-w-md mx-auto px-4 py-6">
-      <header className="mb-8 relative">
-  <div className="flex items-center justify-between">
-    <div>
-      <h1 className="serif text-4xl brand-text tracking-tight">Celadon</h1>
-      <div className="mt-1 flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-gray-400">
-        <span>{dateStr}</span>
-        <span className="w-1.5 h-1.5 bg-[var(--celadon-brand)] rounded-full"></span>
-        <span>{vibe}</span>
-      </div>
+     <div className="fixed bottom-5 right-5 z-50">
+  <div onClick={handleSave}>
+    <CeladonPotteryIcon isAnalyzing={isAnalyzing} />
+  </div>
+</div>
     </div>
 
     <button
@@ -245,18 +241,11 @@ const App: React.FC = () => {
   </div>
 </header>
 
-        <div className="flex justify-center gap-6 text-[10px] uppercase tracking-[0.4em] font-light text-gray-400 mt-4">
-          <span>{dateStr}</span>
-          <span className="w-1.5 h-1.5 bg-[var(--celadon-brand)] rounded-full self-center"></span>
-          <span>{vibe}</span>
-        </div>
-      </header>
-
       <div className="space-y-10">
         <div className="space-y-10">
           {/* Editor */}
-          <div className="kinfolk-card p-8 md:p-12 relative overflow-hidden">
-            <div className="flex flex-col md:flex-row justify-between md:items-end gap-6 mb-8">
+          <div className="kinfolk-card p-5 relative overflow-hidden">
+            <div className="flex flex-col gap-4 mb-5">
               <h2 className="serif text-3xl italic">The Daily Journal</h2>
               <div className="relative group min-w-[200px]">
                 <div className="flex items-center gap-2 border-b border-gray-100 pb-1 focus-within:border-[var(--celadon-brand)] transition-colors">
@@ -308,7 +297,6 @@ const App: React.FC = () => {
                   reader.readAsDataURL(file);
                 }
               }} />
-              <div onClick={handleSave}><CeladonPotteryIcon isAnalyzing={isAnalyzing} /></div>
             </div>
           </div>
 
@@ -476,6 +464,13 @@ const App: React.FC = () => {
           <div className="p-10 bg-white border-l-4 border-[var(--celadon-brand)] text-center shadow-sm">
             <i className="fa-solid fa-quote-left text-[var(--celadon-brand)] opacity-20 text-3xl mb-4"></i>
             <p className="serif text-xl italic text-gray-800 leading-relaxed">"{quote}"</p>
+        <div className="fixed bottom-5 right-5 z-50">
+  <div onClick={handleSave}>
+    <CeladonPotteryIcon isAnalyzing={isAnalyzing} />
+  </div>
+</div>
+
+          
           </div>
         </div>
       </div>
