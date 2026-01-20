@@ -225,9 +225,26 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen w-full max-w-md mx-auto px-4 py-6">
-      <header className="mb-20 text-center relative">
-        <button onClick={() => setCurrentUser(null)} className="absolute right-0 top-0 text-[10px] uppercase tracking-widest text-gray-300 hover:text-red-500">Logout</button>
-        <h1 className="serif text-7xl md:text-[10rem] font-light brand-text tracking-tighter">Celadon</h1>
+      <header className="mb-8 relative">
+  <div className="flex items-center justify-between">
+    <div>
+      <h1 className="serif text-4xl brand-text tracking-tight">Celadon</h1>
+      <div className="mt-1 flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-gray-400">
+        <span>{dateStr}</span>
+        <span className="w-1.5 h-1.5 bg-[var(--celadon-brand)] rounded-full"></span>
+        <span>{vibe}</span>
+      </div>
+    </div>
+
+    <button
+      onClick={() => setCurrentUser(null)}
+      className="text-[10px] uppercase tracking-widest text-gray-300 hover:text-red-500"
+    >
+      Logout
+    </button>
+  </div>
+</header>
+
         <div className="flex justify-center gap-6 text-[10px] uppercase tracking-[0.4em] font-light text-gray-400 mt-4">
           <span>{dateStr}</span>
           <span className="w-1.5 h-1.5 bg-[var(--celadon-brand)] rounded-full self-center"></span>
@@ -235,8 +252,8 @@ const App: React.FC = () => {
         </div>
       </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-        <div className="lg:col-span-8 space-y-12">
+      <div className="space-y-10">
+        <div className="space-y-10">
           {/* Editor */}
           <div className="kinfolk-card p-8 md:p-12 relative overflow-hidden">
             <div className="flex flex-col md:flex-row justify-between md:items-end gap-6 mb-8">
@@ -334,8 +351,8 @@ const App: React.FC = () => {
           </div>
         </div>
 
-        {/* Sidebar */}
-        <div className="lg:col-span-4 space-y-12">
+       {/* Sidebar (now just another section in the mobile flow) */}
+        <div className="space-y-10">
           {/* Manifestation with Progress Bars */}
           <div className="kinfolk-card p-8">
             <h3 className="serif text-2xl mb-6 font-light">Manifestation</h3>
