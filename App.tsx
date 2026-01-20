@@ -224,7 +224,7 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-12 md:py-20">
+    <div className="min-h-screen w-full max-w-md mx-auto px-4 py-6">
       <header className="mb-20 text-center relative">
         <button onClick={() => setCurrentUser(null)} className="absolute right-0 top-0 text-[10px] uppercase tracking-widest text-gray-300 hover:text-red-500">Logout</button>
         <h1 className="serif text-7xl md:text-[10rem] font-light brand-text tracking-tighter">Celadon</h1>
